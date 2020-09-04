@@ -1,0 +1,58 @@
+<%- include('includes/head.ejs'); %>
+</head>
+<%- include('includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <title><%= title %></title>
+        <form class="col s12"
+            action="/membershipPlans/add"
+            method="POST">
+            <div class="input-field col s12">
+                <!-- si potrebbero definire i tipi di piano abboanamento per ogni programma -->
+                <select id="type" name="type" >
+                  <option value="" disabled selected>Seleziona una voce</option>
+                  <option value="Intero">Intero</option>
+                  <option value="Ridotto">Ridotto</option>
+                </select>
+                <label>Sesso</label>
+              </div>
+            <div>
+   
+            <div class="input-field col s12">
+                <select id="turnId" name="turnId" >
+                    <option value="" disabled selected>Seleziona un turno</option>
+                    <% for (let turn of turns) { %> 
+                    <option value= "<%= turn.id %>"> <%= turn.program.name %> <%= turn.name %> </option>
+                    <% } %>
+                </select>
+                <label>Turno</label>
+              </div>
+            <div>
+                
+                <button class="btn disabled" type="submit"
+                        name='submit'>Salva</button>
+            </div>
+            
+        </form>
+
+    </main>
+
+    <%- include('includes/end.ejs'); %>
+    <script>
+
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+
+    </script>

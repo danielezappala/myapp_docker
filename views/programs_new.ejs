@@ -1,0 +1,60 @@
+<%- include('includes/head.ejs'); %>
+</head>
+<%- include('includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <title><%= title %></title>
+        <form class="col s12"
+            action="/programs/add"
+            method="POST">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="name" id="name"
+                        value="">
+                    <label class="active" for="name">Nome</label>
+                </div>
+            </div>
+   
+            <div class="input-field col s12">
+                <select id="seasonId" name="seasonId" >
+                    <option value="" disabled selected>Seleziona un stagione</option>
+                    <% for (let season of seasons) { %> 
+                        <option value= "<%= season.id %>"> <%= season.title %></option>
+                    <% } %>
+                </select>
+                <label>Stagione</label>
+              </div>
+              <div class="row">
+                <div class="input-field col m6 s12">
+                  <input type="hidden" class="validate" required="" aria-required="true" name="pageDest" id="pageDest"
+                    value="programs">
+                </div>
+              </div>
+            <div>       
+                <button class="btn disabled" type="submit"
+                        name='submit'>Salva</button>
+            </div>
+            
+        </form>
+
+    </main>
+
+    <%- include('includes/end.ejs'); %>
+    <script>
+
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+
+    </script>

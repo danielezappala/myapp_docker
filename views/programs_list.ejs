@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs'); %>
+</head>
+
+<%- include('includes/navigation.ejs'); %>
+<main>
+  <h1><%= title %></h1>
+  <p>Totale programmi: <%= programs.length %></p>
+  <list>
+    <% for (let program of programs) { %>
+      <element>
+        <ul>
+          <li><%= program.name %></li>
+        </ul>
+      </element>
+    <% } %>
+    </list>
+    <div class="fixed-action-btn">
+      <a href="programs/new" class="btn-floating btn-large red">
+          <i class="large material-icons light-blue darken-1">add</i>
+      </a>
+  </div>
+</main>
+
+
+<%- include('includes/end.ejs'); %>

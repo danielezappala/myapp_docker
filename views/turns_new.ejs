@@ -1,0 +1,55 @@
+<%- include('includes/head.ejs'); %>
+</head>
+<%- include('includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <title><%= title %></title>
+        <form class="col s12"
+            action="/turns/add"
+            method="POST">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input name="name" id="name" type="text" class="validate" required="" aria-required="true" 
+                        value="">
+                    <label class="active" for="name">Nome</label>
+                </div>
+            </div>
+   
+            <div class="input-field col s12">
+                <select id="programId" name="programId" >
+                    <option value="" disabled selected>Seleziona un cartellone</option>
+                    <% for (let program of programs) { %> 
+                    <option value= "<%= program.id %>"> <%= program.name %></option>
+                    <% } %>
+                </select>
+                <label>Cartellone</label>
+              </div>
+            <div>
+                
+                <button class="btn disabled" type="submit"
+                        name='submit'>Salva</button>
+            </div>
+            
+        </form>
+
+    </main>
+
+    <%- include('includes/end.ejs'); %>
+    <script>
+
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+
+    </script>

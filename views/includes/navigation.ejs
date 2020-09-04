@@ -1,0 +1,41 @@
+<header>
+    <div class="navbar-fixed">
+        <% console.log(global.path) %>
+        <nav>
+            <div class="nav-wrapper red darken-2">
+                    <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul>
+                    <li><a class="<%= global.path === '/home' ? 'active' : '' %>" href="/home">Home</span></a></li>
+                    <li><a class="<%= global.path === '/contacts' ? 'active' : '' %>" href="/contacts">Contatti</span></a></li>
+                    <li><a class="<%= global.path === '/membershipPlans' ? 'active' : '' %>" href="/membershipPlans">Piani abbonamento</span></a></li>
+                    <li><a class="<%= global.path === '/seasons' ? 'active' : '' %>" href="/seasons">Stagioni</span></a></li>
+                    <li><a class="<%= global.path === '/programs' ? 'active' : '' %>" href="/programs">Programmi</span></a></li>
+                    <li><a class="<%= global.path === '/turns' ? 'active' : '' %>" href="/turns">Turni</span></a></li>
+            
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <ul class="sidenav black" id="mobile-demo">
+        <li>
+            <div>
+                <div class="background">
+                    <img src="/images/logo-SPCZD.svg">
+                </div>
+            </div>
+
+        </li>
+        <hr>
+        <li><a class="<%= global.path === '/home' ? 'active' : '' %>" href="/home">Home</span></a></li>
+        <li><a class="<%= global.path === '/contacts' ? 'active' : '' %>" href="/contacts">Contatti</span></a></li>
+        <li><a class="<%= global.path === '/membershipPlans' ? 'active' : '' %>" href="/membershipPlans">Piani abbonamento</span></a></li>
+        <li><a class="<%= global.path === '/seasons' ? 'active' : '' %>" href="/seasons">Stagioni</span></a></li>
+        <li><a class="<%= global.path === '/programs' ? 'active' : '' %>" href="/programs">Programmi</span></a></li>
+        <li><a class="<%= global.path === '/turns' ? 'active' : '' %>" href="/turns">Turni</span></a></li>
+
+    </ul>
+
+</header>

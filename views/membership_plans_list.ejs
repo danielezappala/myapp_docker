@@ -1,0 +1,24 @@
+<%- include('includes/head.ejs'); %>
+</head>
+
+<%- include('includes/navigation.ejs'); %>
+<main>
+  <h1><%= title %></h1>
+  <p>Totale piani abbonamenti: <%= membership_plans.length %></p>
+  <list>
+  <% for (let membership_plan of membership_plans) { %>
+    <div class="contact">
+      <ul>
+        <li><%= membership_plan.turn.program.name%> <%= membership_plan.type %></li>
+      </ul>
+    </div>
+  <% } %>
+  </list>
+  <div class="fixed-action-btn">
+    <a href="membershipPlans/new" class="btn-floating btn-large red">
+        <i class="large material-icons light-blue darken-1">add</i>
+    </a>
+</div>
+</main>
+
+<%- include('includes/end.ejs'); %>

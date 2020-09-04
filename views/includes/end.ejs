@@ -1,0 +1,78 @@
+<!-- jQuery -->
+<script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="/javascripts/materialize.min.js"></script>
+
+<script> 
+//init floatingButton
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var options = {
+      //direction: 'top',
+      hoverEnabled: true
+    }
+    var instances =  M.FloatingActionButton.init(elems, options);
+  });
+
+
+
+// init sidenav
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var options = {
+      edge: 'left',
+      draggable: true,
+      inDuration: 250,
+      outDuration: 200,
+      onOpenStart: null,
+      onOpenEnd: null,
+      onCloseStart: null,
+      onCloseEnd: null,
+      preventScrolling: true
+    }
+    var instance = M.Sidenav.init(elems, options)
+  });
+  
+// init collapsible
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var options = {
+      accordion:true
+    };
+    var instances = M.Collapsible.init(elems,options);
+  });
+
+// init select
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var options = {}
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  $(document).ready(function(){
+        $('.modal').modal();
+      });
+
+
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+
+</script>
+</body>
+</html>

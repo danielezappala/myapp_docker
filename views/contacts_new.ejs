@@ -1,0 +1,60 @@
+<%- include('includes/head.ejs'); %>
+</head>
+<%- include('includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <title><%= title %></title>
+        <form class="col s12"
+            action="/contacts/add"
+            method="POST">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="firstName" id="firstName"
+                        value="">
+                    <label class="active" for="firstName">Nome</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="lastName" id="lastName"
+                        value="">
+                    <label class="active" for="lastName">Cognome</label>
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <select id="sex" name="sex" >
+                  <option value="" disabled selected>Seleziona una voce</option>
+                  <option value="M">Maschio</option>
+                  <option value="F">Femmina</option>
+                </select>
+                <label>Sesso</label>
+              </div>
+            <div>
+                
+                <button class="btn disabled" type="submit"
+                        name='submit'>Salva</button>
+            </div>
+            
+        </form>
+
+    </main>
+
+    <%- include('includes/end.ejs'); %>
+    <script>
+
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+
+    </script>

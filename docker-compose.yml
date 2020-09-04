@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+    docker-app:
+        build: .
+        restart: always
+        ports:
+            - 4000:3000
+        environment:
+            NODE_ENV: development
+            PORT: 3000
+            DB_USERNAME: root
+            DB_PASSWORD: Scenario_2020
+            DB_DATABASE: testSequelize
+            DB_HOSTNAME: mysql # deve coincidere con il nome del servizio del database 
+    mysql:
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: testSequelize
+            MYSQL_ROOT_PASSWORD: Scenario_2020
+        ports:
+            - 3307:3306 
+        volumes:
+            - mysql-data:/var/lib/mysql
+# Names our volume
+volumes:
+    mysql-data:

@@ -1,0 +1,46 @@
+<%- include('includes/head.ejs'); %>
+</head>
+<%- include('includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <title><%= title %></title>
+        <form class="col s12"
+            action="/seasons/add"
+            method="POST">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="title" id="title"
+                        value="">
+                    <label class="active" for="title">Titolo</label>
+                </div>
+            </div>
+   
+            <div>
+                
+                <button class="btn disabled" type="submit"
+                        name='submit'>Salva</button>
+            </div>
+            
+        </form>
+
+    </main>
+
+    <%- include('includes/end.ejs'); %>
+    <script>
+/*
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+*/
+    </script>

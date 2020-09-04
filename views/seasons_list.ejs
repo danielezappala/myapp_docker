@@ -1,0 +1,79 @@
+<%- include('includes/head.ejs'); %>
+</head>
+
+<%- include('includes/navigation.ejs'); %>
+<main>
+  <h1><%= title %></h1>
+  <p>Totale stagioni: <%= seasons.length %></p>
+  <list>
+    <ul class="collapsible">
+      <% for (const [i,season] of seasons.entries()) { %>
+      <li>
+        <div class="collapsible-header"><i class="material-icons iconadd">keyboard_arrow_down</i>
+          <i class="material-icons iconremove">keyboard_arrow_up
+          </i>
+          <span class="title"><%= i+1 %> - <%= season.title %></span>
+        </div>
+        <div class="collapsible-body">
+          <% if (season.programs.length > 0) { %>
+            <div>
+               <td>
+                   <h4>Cartelloni</h4>
+               </td>
+           </div>
+          <table class="highlight">
+         
+
+            <% for (let program of season.programs) { %>
+            <tr>
+                <td>
+                    <program>
+                        <header>
+                            <div>
+                              <%= program.name %>
+                            </div>
+                        </header>
+                    </program>
+                </td>
+                <td><a href="/programs/detail/<%= program.id %>" class="btn">modifica</a></td>
+            </tr>
+            <% } %>
+
+            <% } else { %>
+            <h3>Nessun abbonamento trovato</h3>
+            <% } %>
+        </table>
+        
+          <form class="col s12" action="/programs/add" method="POST">
+          
+   
+                <input type="text" class="validate" required="" aria-required="true" name="name" id="name" value="">
+                <label class="active" for="name">Nuovo</label>
+   
+              <div class="input-field col m6 s12">
+                <input type="hidden"  required="" aria-required="true" name="seasonId" id="seasonId"
+                  value="<%= season.id %>">
+              </div>
+
+              <div class="input-field col m6 s12">
+                <input type="hidden"  required="" aria-required="true" name="pageDest" id="pageDest"
+                  value="seasons">
+            </div>
+            <div>
+              <button class="btn disabled" type="submit" name='submit'>Aggiungi</button>
+            </div>
+          </form>
+        </div>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </list>
+  <div class="fixed-action-btn">
+    <a href="seasons/new" class="btn-floating btn-large red">
+        <i class="large material-icons light-blue darken-1">add</i>
+    </a>
+</div>
+</main>
+
+<%- include('includes/end.ejs'); %>

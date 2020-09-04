@@ -1,0 +1,4 @@
+FROM mysql:latest
+ENV MYSQL_DATABASE testSequelize
+ENV MYSQL_ROOT_PASSWORD Scenario_2020
+

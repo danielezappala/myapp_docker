@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+main {
+  padding: 4rem;
+}
+
+img {
+  display: block;
+}
+
+.background {
+  padding: 1rem;
+}
+
+
+/* Materialize */
+
+/* collapsible */
+
+.iconadd{
+  display:inline-block ;
+}
+.iconremove{
+  display:none !important;
+}
+
+li.active .collapsible-header .material-icons.iconadd{
+  display: none;
+}
+
+li.active .collapsible-header .material-icons.iconremove{
+  display: inline-block !important;
+}
+
+
+.btn {
+  background-color: #42a5f5
+  
+}
+
+.btn:hover { 
+  background-color: #1565c0
+}
+
+.sidenav li a {
+  color: white
+}
+
+/* label color */
+.input-field label {
+  color: #000;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #000;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #000;
+}
