@@ -1,0 +1,12 @@
+express -v <dir>: crea l'albero delle cartelle nella directory indicata 
+npm install nodemon: riavvia il server dopo ogni modifica
+
+npm install --save express: installa expressjs
+npm install express-generator -e : genera l'albero delle cartelle e configura ejs come view engine
+
+npm install --save sql2: installa il modulo per la gestione di un database mysql
+npm install --save sequelize installa il modulo per il mapping di un database in oggetti
+
+npm install ejs
+
+npm install: Installa tutti i package richiesti

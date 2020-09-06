@@ -13,8 +13,8 @@ const sequelize = require('../util/database');
 // sync sequelize
 
 sequelize
-//sync({force: true})
-.sync()
+.sync({force: true})
+//.sync()
 .then( result => {
   
   /** Initialize app */

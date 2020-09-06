@@ -1,0 +1,73 @@
+1) creare il file Dockerfile
+    touch Dockerfile
+2) aprire il file e inserire il seguente contenuto:
+
+        FROM node:12
+
+        # Create app directory
+        WORKDIR /usr/src/app
+
+        # Install app dependencies
+        # A wildcard is used to ensure both package.json AND package-lock.json are copied
+        # where available (npm@5+)
+        COPY package*.json ./
+
+        RUN npm install
+        # If you are building your code for production
+        # RUN npm ci --only=production
+
+        # Bundle app source
+        COPY . .
+
+        EXPOSE 3000
+        CMD [ "node", "server.js" ]
+
+3) creare il file .dockerignore ed inserire il seguente contenuto:
+    node_modules
+    npm-debug.log
+4) Costruire l'immagine di Docker
+    docker build -t <your username>/<nome app> . (attenzione a includere il punto alla fine)
+5) Eseguire l'immagine docker run -p <host port>:<app port> -d <your username>/node-web-app
+
+
+// pull di un immagine 
+docker image pull <repository>: <tag>
+
+// cancella tutte le immagini 
+sudo docker rmi $(docker images -a -q)
+
+// cancella tutti i container exited 
+sudo docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs sudo docker rm
+
+// arresta tutti i container in run
+docker stop $(docker ps -aq)
+
+// rimuovi tutti i container arrestati
+docker rm $(docker ps -aq)
+
+// accedere a mysql dal terminale
+/usr/local/mysql/bin/mysql -u root -p
+
+// log del container
+docker logs <id container>
+
+// ispezione del container
+docker inspects <id container>
+
+// esegue un container con possibilità di interazione (-it) e lancia una shell
+docker run -it <nome immagine> /bin/bash
+
+// elenca i volumi presenti
+docker volume ls
+
+// crea un volume
+docker volume create <nome volume>
+
+// ispeziona un volume
+docker volume inspect <nome volume>
+
+// accedi al volume
+sudo ls /var/lib/docker/volumes/<nome volume>/_data
+
+// esegue un container per il volume
+docker run --name <nome container> -v <nome volume>:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=<password> -d <id imagine>

@@ -32,7 +32,7 @@ const Performance  = sequelize.define('performances',{
     date: 
     {
         type: Sequelize.DATEONLY,
-        primaryKey: true
+        
     }
 });
 
