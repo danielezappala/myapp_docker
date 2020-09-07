@@ -13,9 +13,7 @@ services:
             DB_PASSWORD: Scenario_2020
             DB_DATABASE: testSequelize
             DB_HOSTNAME: mysql # deve coincidere con il nome del servizio del database 
-            # DB_HOSTNAME: localhost # deve coincidere con il nome del servizio del database 
     mysql:
-    # localhost:
         image: mysql:5.7
         restart: always
         environment:
