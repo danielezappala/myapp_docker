@@ -10,21 +10,26 @@
             method="POST">
             <div class="row">
                 <div class="input-field col m6 s12">
-                    <input name="name" id="name" type="text" class="validate" required="" aria-required="true" 
+                    <input type="text" class="validate" required="" aria-required="true" name="name" id="name"
                         value="">
                     <label class="active" for="name">Nome</label>
                 </div>
             </div>
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="programId" id="programId"
+                        value="<%= programId %>">
+                    <label class="active" for="programId">cartellone</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="sourcePage" id="sourcePage"
+                        value="<%= sourcePage %>">
+                    <label class="active" for="sourcePage">url sorgente</label>
+                </div>
+            </div>
    
-            <div class="input-field col s12">
-                <select id="programId" name="programId" >
-                    <option value="" disabled selected>Seleziona un cartellone</option>
-                    <% for (let program of programs) { %> 
-                    <option value= "<%= program.id %>"> <%= program.name %></option>
-                    <% } %>
-                </select>
-                <label>Cartellone</label>
-              </div>
             <div>
                 
                 <button class="btn disabled" type="submit"
@@ -36,6 +41,8 @@
     </main>
 
     <%- include('includes/end.ejs'); %>
+    
+    
     <script>
 
         var formChanged = false;

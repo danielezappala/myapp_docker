@@ -10,15 +10,6 @@ const Performance = require('../models/performance');
 const Membership = require('../models/membership');
 
 console.log('controller site')
-Contact.hasMany(ContactDetail);
-ContactDetail.belongsTo(Contact);
-Season.hasMany(Program);
-Program.belongsTo(Season);
-Program.hasMany(Turn);
-Turn.belongsTo(Program);
-
-MembershipPlan.hasMany(Membership);
-Membership.belongsTo(MembershipPlan)
 
 
 exports.getHome = (req, res, next) => {

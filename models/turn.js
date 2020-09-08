@@ -16,7 +16,15 @@ const Turn = sequelize.define('turns',{
         type: Sequelize.STRING,
         allowNull: false
     }
+},
+    {
+        uniqueKeys: {
+            unique_turn: {
+                fields: ['name', 'programId']
+            }
+        }  
+    }
 
-});
+);
 
 module.exports = Turn;

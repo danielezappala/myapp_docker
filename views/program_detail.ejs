@@ -4,10 +4,8 @@
 
 <body>
     <main>
-        <title><%= title %></title>
-        <form class="col s12"
-            action="/programs/update/<%= program.id %>"
-            method="POST">
+        <div class="title red darken-2"><%= title %></div>
+        <form class="col s12" action="/programs/add/<%= program.id %>" method="POST">
             <div class="row">
                 <div class="input-field col m6 s12">
                     <input type="text" class="validate" required="" aria-required="true" name="name" id="name"
@@ -17,22 +15,43 @@
             </div>
             <div class="row">
                 <div class="input-field col m6 s12">
-                    <input type="hidden" class="validate" required="" aria-required="true" name="programId" id="programId"
-                        value="<%= program.id %>">
+                    <input type="hidden" class="validate" required="" aria-required="true" name="programId"
+                        id="programId" value="<%= program.id %>">
                 </div>
             </div>
-                <div class="input-field col m6 s12">
-                  <input type="hidden" class="validate" required="" aria-required="true" name="pageDest" id="pageDest"
+            <div class="input-field col m6 s12">
+                <input type="hidden" class="validate" required="" aria-required="true" name="pageDest" id="pageDest"
                     value="programs">
-                </div>
-          
-            <div>       
-                <button class="btn disabled" type="submit"
-                        name='submit'>Salva</button>
             </div>
             
-        </form>
+            <div class="ind1">
+                <div class="title blue darken-2">
+                    Turni
+                </div>
+                    <% if (turns.length >0) { %>
+                        <% for (let turn of turns) { %>               
+                            <div class="input-field col m6 s12">
+                                <input type="text" class="validate" required="" aria-required="true" name="name" id="name"
+                                    value="<%= turn.name %>">
+                            </div>
+                            <div class="input-field col m6 s12">
+                                <input type="hidden" class="validate" required="" aria-required="true" name="destPage" id="destPage"
+                                    value="program_detail">
+                            </div>
+                    
+                         <% } %>
+                    <% } else { %>
+                        <h3>Nessun turno presente</h3>
+                    <% } %>
+                    <td><a href="/turns/new/<%=program.id %>?sourcePage=programs/detail/<%=program.id %>" class="btn">Aggiungi turno</a></td>
 
+             </div>
+            <div>
+                <button class="btn disabled red darken-2" type="submit" name='submit'>Salva</button>
+            </div>
+
+        </form>
+        
     </main>
 
     <%- include('includes/end.ejs'); %>

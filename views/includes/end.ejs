@@ -17,6 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances =  M.FloatingActionButton.init(elems, options);
   });
 
+// init modal
+document.addEventListener('DOMContentLoaded', function() {
+    var options = {
+     
+    };
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+
+  });
+
 
 
 // init sidenav
@@ -53,11 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var options = {}
     var instances = M.FormSelect.init(elems, options);
   });
-
-  $(document).ready(function(){
-        $('.modal').modal();
-      });
-
 
         var formChanged = false;
         $("form").change(function (e) {

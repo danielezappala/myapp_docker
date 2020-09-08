@@ -32,25 +32,45 @@ exports.getTurns = (req,res,next) =>{
         res.render('turns_list', {
             turns: turns,
             title: 'Elenco turni'
-
           });
     })
 }
 
-exports.newTurn = (req, res, next) => {
-    Program.findAll()
-    .then(programs =>{
-        
-        console.log('controller newTurn')
+exports.getNewTurn = (req, res, next) => {
+    console.log('controller newTurn')
+    console.log('programId '+req.params.programId)
         res.render('turns_new', {
             title: "Aggiungi turno",
-            programs: programs  
+            programId: req.params.programId,
+            sourcePage: req.originalUrl
         })
-    })
-    .catch(err => console.log(err));
 }
-
 exports.postAddTurn = (req, res, next) => {
+    console.log('source page '+req.body.sourcePage)
+    Turn.create({
+        name: req.body.name,
+        programId: req.body.programId
+        },   
+        {include: Program}
+    )
+    .then(turn => {
+        console.log('new turn  ' + turn.name)
+        console.log('programId ' + turn.programId)
+        res.redirect('/programs/detail/'+turn.programId)
+    })
+    .catch(err => {
+        console.log('errore ' + err)
+        const show_modal = !!req.body.modal; // Cast to boolean
+        
+        res.render('modal',{
+            message: 'creazione del record',
+            submessage: 'Un turno con nome '+ req.body.name.toUpperCase() + ' è già presente per questo cartellone ',
+            error: err,
+            destPage: req.body.sourcePage
+        })
+    });
+}
+exports.OLDpostAddTurn = (req, res, next) => {
 
     const name = req.body.name;
     const programId = req.body.programId;

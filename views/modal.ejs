@@ -1,10 +1,38 @@
+<%- include('includes/head.ejs'); %>
+</head>
+
+<%- include('includes/navigation.ejs'); %>
+
 <!-- Modal Structure -->
-<div id="modal2" class="modal">
+
+<div id="modal1" class='modal'>
   <div class="modal-content">
-    <h4>Gestione abbonamenti</h4>
-    <p>Il database è stato popolato con i dati di prova</p>
+          <h4>Errore in fase di <%= message %> </h4>
+          <p><%= submessage %></p>
+          <p style="font-size: 9px"><%= error.status %></p>
+        </div>
+        <div class="modal-footer">
+          <a href="<%= destPage %>" class="modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
+        </div>  
   </div>
-  <div class="modal-footer">
-    <a href="/init" class="modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
-  </div>
-</div>
+
+
+<!-- jQuery -->
+<script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="/javascripts/materialize.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var options = {
+     
+    };
+    var elems = document.querySelectorAll('#modal1');
+    console.log(elems)
+    var instances = M.Modal.init(elems, options);
+    instances[0].open()
+  });
+  </script>
+
+

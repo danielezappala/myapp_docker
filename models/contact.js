@@ -33,13 +33,23 @@ const Contact = sequelize.define('contacts',{
 
     fullName:{
         type: Sequelize.VIRTUAL,
-    get() {
-      return `${this.firstName} ${this.lastName}`;
-    },
-    set(value) {
-      throw new Error('Impossibile impostare il nome completo');
+            get() {
+                return `${this.firstName} ${this.lastName}`;
+            },
+            set(value) {
+                throw new Error('Impossibile impostare il nome completo');
+            }
     }
+    
+    /*,
+
+    instanceMethods: {
+        lowerCase: function(field) {
+             this.set(field, this.get(field).toLowerCase())
+             return this.save()
+        }  
     }
+    */
 
 });
 

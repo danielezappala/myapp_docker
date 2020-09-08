@@ -49,7 +49,7 @@ exports.postAddContact = (req, res, next) => {
         firstName: firstName,
         lastName: lastName,
         sex: sex 
-  
+        
       })
       .then(contact => {
         console.log('New contact created ' + contact.lastName);

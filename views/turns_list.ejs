@@ -4,7 +4,6 @@
 <%- include('includes/navigation.ejs'); %>
 <main>
   <h1><%= title %></h1>
-  <p>Totale Turni: <%= turns.length %></p>
   <list>
       <% for (let turn of turns) { %>
         <element>
@@ -13,11 +12,11 @@
           </ul>
         </element>
       <% } %>
-    </list>
-    <div class="fixed-action-btn">
-      <a href="turns/new" class="btn-floating btn-large red">
-          <i class="large material-icons light-blue darken-1">add</i>
-      </a>
+      <div class="fixed-action-btn">
+        <a href="turns/new" class="btn-floating btn-large red">
+            <i class="large material-icons light-blue darken-1">add</i>
+        </a>
+    </div>
   </div>
 </main>
 

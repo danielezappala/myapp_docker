@@ -1,7 +1,10 @@
 const Program = require('../models/program');
 const Season = require('../models/season');
-
+const Turn = require('../models/turn');
 console.log('controller programs')
+
+Program.hasMany(Turn);
+Turn.belongsTo(Program);
 
 exports.bulkCreatePrograms = () => {
     console.log('creating programs in seasons')
@@ -66,20 +69,29 @@ exports.postAddProgram = (req, res, next) => {
 
   exports.getProgramById = (req, res, next) => {
     console.log('controller getProgram');
-    console.log('session ' + req.session)
+    //console.log('session ' + req.session)
     //console.log('request ' + JSON.stringify(req.body));
     const programId = req.params.programId;
     const pageDest = req.params.pageDest;
-
     console.log('getProgram ' + programId );
-  
-    Program.findByPk(programId)
-    .then(program => {
-        console.log('found ' + program.name);
+    return Program.findOne({
+        where: {id: programId},
+            include: Turn
+        })
+        .then(async program => { 
+            
+                return result = {
+                    program: program,
+                    turns: program.turns
+                }
+        })
+    .then(result => {
+        console.log('found ' + result.program.name);
         res.render('program_detail', 
         {
             title: 'Dettaglio cartellone',
-            program: program
+            program: result.program,
+            turns: result.turns
         });
       })
       .catch(err => console.log(err));
