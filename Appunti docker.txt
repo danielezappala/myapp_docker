@@ -27,7 +27,8 @@
     npm-debug.log
 4) Costruire l'immagine di Docker
     docker build -t <your username>/<nome app> . (attenzione a includere il punto alla fine)
-5) Eseguire l'immagine docker run -p <host port>:<app port> -d <your username>/node-web-app
+5) Eseguire l'immagine docker 
+run -p <host port>:<app port> -d <your username>/node-web-app
 
 
 // pull di un immagine 
