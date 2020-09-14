@@ -10,3 +10,6 @@ npm install --save sequelize installa il modulo per il mapping di un database in
 npm install ejs
 
 npm install: Installa tutti i package richiesti
+
+// lancia l'applicazione dopo aver definito una o più variabili ambientali
+NODE_ENV=development node app.js 

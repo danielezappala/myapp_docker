@@ -2,10 +2,10 @@ version: '3.3'
 
 services:
     docker-app:
-        build: .
+        build: .           
         restart: always
         ports:
-            - 4000:3000
+           - 4000:3000
         environment:
             NODE_ENV: development
             PORT: 3000

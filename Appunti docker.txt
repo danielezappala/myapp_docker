@@ -30,6 +30,11 @@
 5) Eseguire l'immagine docker 
 run -p <host port>:<app port> -d <your username>/node-web-app
 
+Attenzione ! per rendere persistenti i dati in un container è necessario montare un volume per i dati per quel container 
+
+6) se l'applicazione ha più servizi (es. server + db)
+7) usare docker-compose up --build oppurre docker-compose build per ogni servizio e poi docker-compose up
+
 
 // pull di un immagine 
 docker image pull <repository>: <tag>
