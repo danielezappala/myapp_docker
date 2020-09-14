@@ -1,34 +1,28 @@
 
 const Season = require('../models/season');
 const Program = require('../models/program');
-const { bulkCreatePrograms } = require('./programs');
+const {bulkCreatePrograms} = require('./programs');
 console.log('controller seasons')
 Season.hasMany(Program)
 Program.belongsTo(Season)
 
+let fetchedSeasons;
+
  exports.getSeasons =  (req,res,next) =>{
+    
     Season.findAll(
         {include: Program}
     )  
-    // usando asyn/await salvo la query in una variabileù
-    // e la salvo in un oggetto per passarla
-    // insieme al risultato della promise precedente
-
-    .then(async seasons =>{
-        
-        let programs = await Program.findAll()
-        result = {
-            seasons: seasons, 
-            programs: programs
-        }
-        return result
+        .then( seasons =>{  
+            fetchedSeasons = seasons
+        Program.findAll()
     })
-    .then(result =>{
-        console.log(JSON.stringify(result));
+    .then(programs =>{
+        console.log(JSON.stringify(programs));
         res.render('seasons_list', {
-            seasons: result.seasons,
+            seasons: fetchedSeasons,
             title: 'Elenco stagioni',
-            programs: result.programs 
+            programs: programs
           });
     })
 }

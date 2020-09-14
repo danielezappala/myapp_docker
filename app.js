@@ -5,6 +5,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+console.log('NODE_ENV:' + process.env.NODE_ENV);
+console.log('APP_HOST: ' + process.env.APP_HOST); 
+console.log('APP_PORT: ' + process.env.APP_PORT); 
+
+
 // router setup
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

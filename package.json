@@ -3,14 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon node ./bin/www"
+    "start": "nodemon node ./bin/www",
+    "start-dev": ". dev.env; node app.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
     "cool-ascii-faces": "^1.3.4",
+    "cross-env": "^7.0.2",
     "debug": "~2.6.9",
     "docker": "^1.0.0",
+    "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-session": "^1.17.1",
